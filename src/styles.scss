@@ -1,1 +1,68 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.basic-container {
+  padding: 30px;
+
+}
+
+.version-info {
+  font-size: 8pt;
+  float: right;
+}
+
+.mat-slider.mat-slider-horizontal .mat-slider-wrapper {
+  top: 18px;
+}
+
+.mat-slider.mat-slider-horizontal .mat-slider-track-wrapper {
+  height: 10px;
+  border-radius: 10px
+}
+
+.mat-slider.mat-slider-horizontal .mat-slider-track-background,
+.mat-slider.mat-slider-horizontal .mat-slider-track-fill {
+  height: 100%;
+}
+
+.mat-slider.mat-slider-horizontal .mat-slider-track-fill {
+  background-color: blue;
+
+}
+
+.mat-accent .mat-slider-thumb {
+  height: 26px;
+  width: 26px;
+  background-color: white;
+  border: solid 2px gray;
+  bottom: -17px;
+  right: -10px;
+}
+
+.mat-slider-min-value:not(.mat-slider-thumb-label-showing) .mat-slider-thumb {
+  background-color: gray !important;
+  z-index: 999;
+}
+
+.mat-slider-thumb-label {
+  background: transparent !important;
+  // width: 100px;
+}
+
+.mat-progress-bar-fill::after {
+  background-color: rgb(181, 179, 179) !important;
+
+}
+
+.mat-progress-bar.mat-accent .mat-progress-bar-buffer {
+  background-color: white !important;
+}
