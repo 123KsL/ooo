@@ -9,7 +9,11 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+@import './_var.scss';
 
+@include mat-core();
+@include angular-material-theme($dynamic-app-theme);
+@include angular-material-typography($dynamic-typography);
 .basic-container {
   padding: 30px;
 
