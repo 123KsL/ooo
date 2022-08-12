@@ -1,15 +1,15 @@
-<div style="justify-content:center;display: flex;align-items: center;">
+<div style="justify-content:center;display: flex;align-items: center;min-height: 80vh;">
   <mat-drawer-container class="example-container" autosize
-    style="border: 1px solid #999;width: 70%;height:70%;border-radius: 6px;">
+    style="width: 70%;height:70%;border-radius: 6px;box-shadow: 0 0 5px 2px #e8e3e3;">
     <mat-drawer #drawer class="example-sidenav" mode="side" style="padding: 0px 20px;text-align: center;">
 
       <button mat-mini-fab color="primary" (click)="Sidebar()" style="margin:10px;">
         <mat-icon style="transform:rotate(180deg);">login</mat-icon>
       </button>
       <h2>Switch Video</h2>
-      <mat-list *ngFor="let time of TimeList" style="margin: 10px 0;">
+      <mat-list *ngFor="let time of VideoInformation" style="margin: 10px 0;">
         <mat-list-item>
-          <button mat-button (click)="DateAll()">{{time}}</button>
+          <button mat-button (click)="DateAll(time)">{{time.date |date}}</button>
         </mat-list-item>
         <mat-divider></mat-divider>
       </mat-list>
@@ -32,12 +32,12 @@
           </div>
           <video id="video1" class="videoButton" #video1 style="position:relative;z-index:1 !important"
             [src]="SrcListItem" preload="auto" [muted]="true" (timeupdate)="TimeupDate()" (ended)="Ended()"
-            [defaultMuted]="true" (pointermove)="pointermove()" (pointerout)="pointerout()" (waiting)="waiting()"
-            (playing)="playing()" (error)="Error($event)">
+            [defaultMuted]="true" (pointermove)="pointermove()" (pointerout)="pointerout()" (waiting)="Waiting()"
+            (playing)="Playing()" (error)="Error($event)" objectFit="cover" >
             <!-- <ng-container *ngFor="let itemSrc of SrcList">
               <source [src]="itemSrc" type="video/mp4">
             </ng-container> -->
-
+          
           </video>
 
           <div #videoButton style="position: absolute;bottom: 0;left: 0;z-index:2147483647;right: 0;display: flex;
@@ -45,7 +45,7 @@
             <div style="display:flex;align-items: center;flex: 1;">
 
               <button mat-icon-button (click)="StartEnd()"
-                style="display:flex;justify-content: center;align-items: center;">
+                style="display:flex;justify-content: center;align-items: center;margin: 0 10px;">
                 <mat-icon style="font-size: 30px;display: flex;justify-content: center;align-items: center;">
                   {{this.Bo?'play_arrow':'pause'}}</mat-icon>
               </button>
@@ -55,14 +55,15 @@
                   [max]="(videoAllCount && videoAllCount>0)?videoAllCount:100">
                 </mat-slider>
                 <div style="position:absolute;right: 0;left: 0;bottom: 0;top: 0;display: flex;align-items: center;">
-                  <mat-progress-bar mode="determinate" [value]="buffered" color="accent" 
-                    style="width:100%;height:8px;cursor: pointer;z-index: -1;border-radius: 6px;width: 97%;margin: 0 auto;">
+                  <mat-progress-bar mode="determinate" [value]="buffered" color="accent"
+                    style="width: 97%;height: 10px;cursor: pointer;z-index: -1;border-radius: 6px;margin: 0 auto;
+                    top: -1px;position: relative;">
                   </mat-progress-bar>
                 </div>
 
 
               </div>
-              <div style="min-width: 50px;"> {{Time(this.values)}} / {{Time(this.videoAllCount)}}</div>
+              <div style="min-width: 50px;"> {{TimeFormat(this.values)}} / {{TimeFormat(this.videoAllCount)}}</div>
             </div>
             <div style="display:flex;align-items: center;padding-right:10px;padding-left: 20px;">
               <!-- <div style="display:flex;align-items: center;">
@@ -78,6 +79,7 @@
                 <button mat-menu-item (click)="VideoSpeed(1)">1.0 x</button>
                 <button mat-menu-item (click)="VideoSpeed(2)">2.0 x</button>
                 <button mat-menu-item (click)="VideoSpeed(8)">8.0 x</button>
+                <button mat-menu-item (click)="VideoSpeed(16)">16.0 x</button>
               </mat-menu>
               <!-- {{Fullscreen}} -->
               <button mat-icon-button (click)="requestFullscreen()">
@@ -101,4 +103,4 @@
   </mat-drawer-container>
 </div>
 
-<button mat-button (click)="DateAll()" color="primary">sss</button>
+<!-- <button mat-button (click)="DateAll()" color="primary">sss</button> -->
