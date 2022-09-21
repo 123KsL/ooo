@@ -9,6 +9,7 @@ import { Mp4Component } from './mp4/mp4.component';
 import { DemoMaterialModule } from './material-module';
 import { FormsModule } from '@angular/forms';
 import { Mp41Component } from './mp41/mp41.component';
+import { SssComponent } from './sss/sss.component';
 
 
 
@@ -19,6 +20,7 @@ import { Mp41Component } from './mp41/mp41.component';
     OneComponent,
     Mp4Component,
     Mp41Component,
+    SssComponent,
   ],
   imports: [
     DemoMaterialModule,
