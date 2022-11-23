@@ -1,0 +1,171 @@
+.one {
+  width: 100px;
+  padding: 20px;
+  transition: all 1s linear;
+  border: 1px solid black;
+
+  &:hover {
+    cursor: pointer;
+    //transform: translate(120px, 0);
+    transition: height .25s, width .25s, border-top-color .25s;
+    transition-delay: 0.5s, 0.75s, 0.75s;
+    width: 100px;
+
+    border-top: 3px solid #00e2ff;
+    border-right: 3px solid #00e2ff;
+  }
+}
+
+.circle {
+  width: 120px;
+  height: 120px;
+  line-height: 120px;
+  border-radius: 50%;
+
+  &::before,
+  &::after {
+    border-radius: 50%;
+  }
+
+  &:hover {
+    color: #00e2ff;
+
+    &::before {
+      width: 120px;
+      height: 120px;
+      border-color: #00e2ff;
+      transition: border-top-color .25s linear,
+        border-right-color .25s linear,
+        border-bottom-color .25s linear,
+        border-left-color .25s linear;
+      transition-delay: 0s, .25s, .5s, .75s;
+    }
+
+    &::after {
+      width: 120px;
+      height: 120px;
+      border-top: 3px solid #00e2ff;
+      transform: rotate(270deg);
+      transition: transform .75s linear;
+      transition-delay: 0s;
+    }
+  }
+}
+
+.box-reflect {
+
+  background-image: url('https://images.pokemontcg.io/xy2/12_hires.png');
+  -webkit-box-reflect: right;
+}
+
+.rect {
+  width: clamp(120px, 160px, 180px);
+  //border: 1px solid black;
+  height: max(20px, );
+}
+a:hover{
+  background-color: #00e2ff;
+  transition-delay: 5s;
+}
+
+
+
+
+// .wrapper {
+//   container-type: inline-size;
+//   container-name: card;
+// }
+
+// .c-article {
+//   /* Default stacked style */
+// }
+
+// @container card (min-width: 400px) {
+//   /* Horizontal style. */
+//   .c-article {
+//     display: flex;
+//     align-items: center;
+//   }
+// }
+
+@media screen and (min-aspect-ratio: 3/4) {
+
+  //aspect-ratio定义输出设备中的页面可见区域宽度与高度的比率
+  // 只要宽高比大于等于3/4，就会执行
+  a {
+    background-color: black;
+  }
+}
+// .da{
+//   background-color: rgba(0,0,0,0.5);
+//   backdrop-filter: blur(2px);
+// }
+.bg {
+  margin: 0 auto;
+  width: 800px;
+  height: 350px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: url(./photo.png);
+  & > div {
+      width: 200px;
+      margin: 0 20px;
+      height: 150px;
+      line-height: 150px;
+      text-align: center;
+      background: rgba(255, 255, 255,0.5);
+      border-radius: 6px;
+  }
+  .g-filter {
+      filter: blur(6px);
+  }
+  .g-backdrop-filter {
+      backdrop-filter: blur(6px);
+  }
+}
+.newclass{
+  -webkit-mask-image: url(./photo.png);
+  mask-image: url(./photo.png);
+  -webkit-mask-size: 70%;
+  mask-size: 70%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;   
+  width: 300px;
+  height: 300px;
+  //background-image: url(./photo.png);
+}
+
+
+
+.line{
+
+  background: linear-gradient(#fc0, #f0c);
+  offset-rotate: 0deg;
+  offset-path: path("M 0 0 L 100 0 L 200 0 L 300 100 L 400 0 L 800 100 L 600 0 L 700 100 L 800 0"); /* 只改变运动路径 */
+  animation: move 2000ms linear infinite alternate;
+}
+
+@keyframes move {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+@function makeLongShadow($color) {
+  $val: 0px 0px $color;
+
+  @for $i from 1 through 50 {
+      $val: #{$val}, #{$i}px #{$i}px #{$color};
+  }
+
+  @return $val;
+}
+
+.textShow{
+  font-size: 20px;
+  text-shadow: makeLongShadow(hsl(14, 100%, 30%));
+}

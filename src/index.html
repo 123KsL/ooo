@@ -10,8 +10,24 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <script src='assets/tinycolor.js'></script>
+
+  <!-- type="module" //任何带有type="module"的脚本标记都被视为JavaScript模块,默认情况下会延迟执行 -->
+  <!-- <img src="image.jpg" alt="..." loading="lazy" />
+  <iframe src="video-player.html" title="..." loading="lazy"></iframe> -->
+
+  <script src='assets/tinycolor.js' type="module"></script>
   <script src="https://unpkg.com/nplayer@latest/dist/index.min.js"></script>
+
+  <script src="https://cdn.bootcss.com/three.js/r83/three.min.js"></script>
+  <script src="http://www.yanhuangxueyuan.com/threejs/examples/js/loaders/OBJLoader.js"></script>
+
+  <script src="https://unpkg.com/vconsole@latest/dist/vconsole.min.js"></script>
+
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+  <script>
+    // VConsole will be exported to `window.VConsole` by default.
+    var vConsole = new window.VConsole();
+  </script>
   <!-- <script src="https://g.alicdn.com/de/prismplayer/2.8.2/hls/aliplayer-vod-anti-min.js"></script>
   <link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.8.2/skins/default/aliplayer-min.css" />
   <script type="text/javascript" charset="utf-8" src="https://g.alicdn.com/de/prismplayer/2.8.2/aliplayer-h5-min.js"></script> -->

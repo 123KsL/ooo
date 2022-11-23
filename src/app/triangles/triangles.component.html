@@ -1,0 +1,28 @@
+<!-- <div class="triangles1"></div>
+ <div class="triangles2"></div>
+<div class="triangles3"></div> 
+<div>{{value}}</div> -->
+<!-- <canvas style="width: 300px; height: 200px;" canvas-id="firstCanvas" #firstCanvas>
+    <img  src="assets/images/1.webp" alt=""> 
+</canvas> -->
+<!-- <div class="a1">
+
+</div> -->
+<ng-container *ngFor="let item of ItemList" style="border: 1px solid black;">
+  name:{{item.name}}
+  count:{{item.count}}<br>
+</ng-container>
+
+<form class="example-form" [formGroup]="FromGroup">
+    <mat-form-field class="example-full-width" >
+      <mat-label>Name</mat-label>
+      <input matInput placeholder="name"  formControlName="name">
+    </mat-form-field>
+  
+    <mat-form-field class="example-full-width">
+        <mat-label>Count</mat-label>
+        <input matInput placeholder="count" formControlName="count">
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="OK()">OK</button>
+  </form>
+
