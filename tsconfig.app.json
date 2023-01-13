@@ -1,6 +1,8 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "target": "ES5",
+    "experimentalDecorators": true,
     "outDir": "./out-tsc/app",
     "types": [],
     "paths": {

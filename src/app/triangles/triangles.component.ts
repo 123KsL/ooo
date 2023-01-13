@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { map } from 'rxjs';
 import { ApiService } from '../service/api.service';
 
 @Component({
@@ -10,7 +12,7 @@ import { ApiService } from '../service/api.service';
 export class TrianglesComponent implements OnInit, AfterViewInit {
   value: number = 0;
   @ViewChild('firstCanvas') firstCanvas!: ElementRef;
-  constructor(private ApiService: ApiService) {
+  constructor(private ApiService: ApiService, private _http: HttpClient) {
 
     //window.open('mailto:361617463@qq.com');
     //this.sendMail('xxx', 'xxx', 'xxx', 'xxx')
@@ -96,11 +98,17 @@ export class TrianglesComponent implements OnInit, AfterViewInit {
     // }
   }
   ItemList!: item[]
+  ItemList1!: item[]
   ngOnInit(): void {
     this.ApiService.getTypeRequest('user/tableGet').subscribe((res: any) => {
-      this.ItemList=res.data
+      this.ItemList = res.data
       console.log(res)
     })
+    this.ApiService.getTypeRequest('user1/tableGet').subscribe((res: any) => {
+      this.ItemList1 = res.data
+      console.log(res)
+    })
+    
     // this.getUserMedia()
   }
   getUserMedia() {
@@ -125,11 +133,54 @@ export class TrianglesComponent implements OnInit, AfterViewInit {
       updateOn: 'change'
     })
   })
+  FromGroupEdit: FormGroup = new FormGroup({
+    count1: new FormControl<number | null>(null, {
+      validators: [Validators.required],
+      updateOn: 'change'
+    })
+  })
   OK() {
     this.ApiService.postTypeRequest('user/tablePost', this.FromGroup.value).subscribe((res: any) => {
       console.log(res)
       this.ItemList.push(this.FromGroup.value)
     })
+  } 
+  OK1() {
+    this.ApiService.postTypeRequest('user/tablePost', this.FromGroup.value).subscribe((res: any) => {
+      console.log(res)
+      this.ItemList.push(this.FromGroup.value)
+    })
+  }
+  
+
+  Delete(item: item, index: number) {
+    console.log(item)
+    this.ApiService.deleteTypeRequest(`user/tableDelete/${item.name}`,undefined).subscribe(_ => {
+      this.ItemList.splice(index, 1)
+    })
+  }
+
+  postTypeRequest1() {
+    console.log('first')
+    //https://openai.weixin.qq.com/openapi/aibot/{TOKEN}
+    this._http.post(`https://openai.weixin.qq.com/openapi/sign/{WNgis2PaSDBKPh2QByJ0uRs1FMdG7r}`, {
+      username: 'username',
+      avatar: 'avatar',
+      userid: 'l16yMzTcqCbx19a'
+    }).subscribe(_ => {
+      console.log(_)
+    })
+  }
+  fileChange(event: Event) {
+    const target = event.target as HTMLInputElement;
+    const files = target.files as FileList;
+    console.log(files[0])
+    this.ApiService.postTypeRequest('user/files', files[0]).subscribe(_ => {
+      console.log(_)
+    })
+  }
+  openEdit(){
+
   }
 }
 interface item {

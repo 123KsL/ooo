@@ -5,23 +5,23 @@
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
-    "strict": true,
+    "strict": true, //是否严格模式
+    "noImplicitAny": false,
+    "noUnusedLocals": false, //检查只声明未使用的局部变量
+    "noUnusedParameters": false, //检查未使用的函数的参数
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true, //if/else 每个分支都要有返回值
+    "noFallthroughCasesInSwitch": true, //防止switch 语句贯穿
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2020",
-    "module": "es2020",
-    "lib": [
-      "es2020",
-      "dom"
-    ]
+    "target": "es2022",
+    "module": "es2022",
+    "lib": ["es2022", "dom"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

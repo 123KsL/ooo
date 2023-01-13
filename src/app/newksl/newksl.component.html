@@ -1,3 +1,104 @@
+<!-- <div style="margin: 0 auto;
+width: 100%;
+height: 100%;
+display: flex;
+justify-content: space-between;
+align-items: center;
+background: url(./1.webp);">
+  <div style="  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: rgba(255, 255, 255,0.5);
+  border-radius: 6px;">
+    <span 
+    class="a"
+    style="background-clip: text; 
+color: transparent;
+font-size: 9em;
+background: linear-gradient(45deg, #f44336, #ff9800, #ffe607, #09d7c4, #1cbed3, #1d8ae2, #bc24d6);
+  background-clip: border-box;
+  background-clip: text;
+-webkit-background-clip: text;
+
+">
+      backdrop-filter
+    </span>
+  </div>
+</div> -->
+<!-- <div class="newclass">
+  <img src="./photo.png" alt="Cinque Terre" width="600" height="400">
+</div> -->
+
+
+
+<video #video autoplay style="width: 500px;height: 500px;"></video>
+{{this.srcObject}}
+
+
+<button (click)="download()">download</button>
+<button (click)="start1()">start1</button>
+<button (click)="stop1()">stop1</button>
+<button (click)="startElem()">start</button>
+<button (click)="stopElem()">stop</button>
+<video #video1 autoplay style="width: 500px;height: 500px;"></video>
+
+<canvas #canvas style="width: 500px;height: 500px;"></canvas>
+<canvas #StarCanvas style="width: 500px;height: 500px;"></canvas>
+
+
+
+<div class="goQi">
+  <img src="//img95.699pic.com/xsj/0e/ia/z0.jpg!/fh/300" alt="" style="mix-blend-mode: darken;">
+</div>
+
+
+<div class="firePhoto">
+  sss
+</div>
+
+
+<!-- <img lazy-load-image  [images]="images"  (load)="onGifLoad($event)"> -->
+<!-- 
+border-radius: 6px;
+overflow: hidden; -->
+
+<div #gifImageElement style="color: #000;margin: 0 auto;
+font-size: 6em;
+
+width: 100px;
+height: 100px;
+font-family: cursive;
+user-select: none;
+
+position: relative;">
+  <div style="position: absolute;
+  left: 0;
+  top: 10px;
+  bottom: 0;
+  right: 0;
+
+  mix-blend-mode: overlay;
+  display: flex;
+  justify-content: center;
+  align-items: center;">
+    <!-- sss -->
+    <!-- <img src="//img95.699pic.com/xsj/0e/ia/z0.jpg!/fh/300" alt="" style="width: 100%;height: 100%;"> -->
+    <img src="assets/images/person.png" alt="" style="width: 100%;height: 100%;">
+  </div>
+
+  <img style="width: 100%;height: 100%;"
+    src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fgd-hbimg.huaban.com%2F853cf618798bf2f6b992fd57eabafc880bd678e115fc7b-RG1vof_fw658&refer=http%3A%2F%2Fgd-hbimg.huaban.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1666006173&t=dc8f94e8b52b06e1cacecd8d227e6191"
+    alt="">
+</div>
+
+
+<button (click)="gif()">gif</button>
+<button (click)="jueJin()">jueJin</button>
+
+<canvas #gifCanvas style="width:200px;height: 200px;"></canvas>
 <!-- <div class="da">
   <div *ngIf="numbers$ | async as number" class="one">
   <p *ngFor="let n of number">{{ n }}</p>
@@ -10,14 +111,7 @@
 
 
 </div>
-<div class="bg">
-  <div>Normal</div>
-  <div class="g-filter">filter</div>
-  <div class="g-backdrop-filter">backdrop-filter</div>
-</div>
-<div class="newclass">
-  <img src="./photo.png" alt="Cinque Terre" width="600" height="400">
-</div>
+
 
 
 
@@ -44,3 +138,23 @@ background: linear-gradient(#fc0, #f0c);" class="line"> </div>
     text="Click me"
     (onClick)="helloWorld()">
 </dx-button> -->
+
+<div style="border: 1px solid black;font-size: 20px;
+color:#b9b9b9;
+font-weight: 500;
+display: flex;align-items: center;width: 500px;height: 500px;justify-content: center;">
+<!-- <mat-card>
+
+</mat-card> -->
+  <div style="margin-right: 5px;">
+    loading
+  </div>
+  <div class="loading">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+<canvas #watermarking style="border: 1px solid black;"></canvas>
+<input type="file" (change)="changeWatermark($event)">
+<button (click)="download1()">download</button>

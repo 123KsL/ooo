@@ -21,6 +21,9 @@ export class SssComponent implements OnInit {
     // this.name = ['name changed']
     this.changeName.next('name')
   }
+  start(){
+    
+  }
 }
 
 void function () {

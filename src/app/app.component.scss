@@ -1,0 +1,3 @@
+.text_data:before{
+    content: attr(data-abc);
+}

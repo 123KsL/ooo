@@ -11,15 +11,18 @@ export class TokenInterceptorService {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    // if (!request.headers.has('Content-Type')) {
-    //   console.log('first')
-    //   request = request.clone({ headers: request.headers.set('Content-Type', 'application/json') });
-    // }
-    // request = request.clone({ headers: request.headers.set('Accept', 'application/json') }).clone({
-    //   setHeaders: {
-    //     Authorization: `token`
-    //   }
-    // });
+    if (!request.headers.has('Content-Type')) {
+      console.log('first')
+      request = request.clone({ headers: request.headers.set('Content-Type', 'application/json') });
+    }
+    request.headers.append('Access-Control-Allow-Headers', 'Content-Type');
+    request.headers.append('Access-Control-Allow-Methods', 'POST');
+    request.headers.append('Access-Control-Allow-Origin', '*');
+    request = request.clone({ headers: request.headers.set('Accept', 'application/json') }).clone({
+      setHeaders: {
+        Authorization: `token`
+      }
+    });
     return next.handle(request);
   }
 }

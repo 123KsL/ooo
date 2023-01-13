@@ -1,3 +1,6 @@
+*{
+  //font-family: cursive;
+}
 .one {
   width: 100px;
   padding: 20px;
@@ -63,7 +66,8 @@
   //border: 1px solid black;
   height: max(20px, );
 }
-a:hover{
+
+a:hover {
   background-color: #00e2ff;
   transition-delay: 5s;
 }
@@ -96,41 +100,31 @@ a:hover{
     background-color: black;
   }
 }
+
 // .da{
 //   background-color: rgba(0,0,0,0.5);
 //   backdrop-filter: blur(2px);
 // }
 .bg {
-  margin: 0 auto;
-  width: 800px;
-  height: 350px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: url(./photo.png);
-  & > div {
-      width: 200px;
-      margin: 0 20px;
-      height: 150px;
-      line-height: 150px;
-      text-align: center;
-      background: rgba(255, 255, 255,0.5);
-      border-radius: 6px;
-  }
+
+  &>div {}
+
   .g-filter {
-      filter: blur(6px);
+    filter: blur(6px);
   }
+
   .g-backdrop-filter {
-      backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
   }
 }
-.newclass{
-  -webkit-mask-image: url(./photo.png);
-  mask-image: url(./photo.png);
+
+.newclass {
+  // -webkit-mask-image: url(./photo.png);
+  // mask-image: url(./photo.png);
   -webkit-mask-size: 70%;
   mask-size: 70%;
   -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;   
+  mask-repeat: no-repeat;
   width: 300px;
   height: 300px;
   //background-image: url(./photo.png);
@@ -138,11 +132,12 @@ a:hover{
 
 
 
-.line{
+.line {
 
   background: linear-gradient(#fc0, #f0c);
   offset-rotate: 0deg;
-  offset-path: path("M 0 0 L 100 0 L 200 0 L 300 100 L 400 0 L 800 100 L 600 0 L 700 100 L 800 0"); /* 只改变运动路径 */
+  offset-path: path("M 0 0 L 100 0 L 200 0 L 300 100 L 400 0 L 800 100 L 600 0 L 700 100 L 800 0");
+  /* 只改变运动路径 */
   animation: move 2000ms linear infinite alternate;
 }
 
@@ -150,6 +145,7 @@ a:hover{
   0% {
     offset-distance: 0%;
   }
+
   100% {
     offset-distance: 100%;
   }
@@ -159,13 +155,99 @@ a:hover{
   $val: 0px 0px $color;
 
   @for $i from 1 through 50 {
-      $val: #{$val}, #{$i}px #{$i}px #{$color};
+    $val: #{$val},
+    #{$i}px #{$i}px #{$color};
   }
 
   @return $val;
 }
 
-.textShow{
+.textShow {
   font-size: 20px;
   text-shadow: makeLongShadow(hsl(14, 100%, 30%));
+}
+
+
+@layer type {
+  p {
+    color: red;
+  }
+}
+
+.a {
+  animation: change 10s infinite linear;
+
+  @keyframes change {
+    100% {
+      filter: hue-rotate(360deg);
+    }
+  }
+}
+
+.goQi {
+  width: 100px;
+  //height: 69px;
+  background-size: 100px 100px;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(to right, red 100%, rgb(198, 127, 127) 100%), url('./56rw0xji.bmp');
+
+  background-blend-mode: color-dodge;
+}
+
+.firePhoto {
+  background-image: url(https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fgd-hbimg.huaban.com%2F853cf618798bf2f6b992fd57eabafc880bd678e115fc7b-RG1vof_fw658&refer=http%3A%2F%2Fgd-hbimg.huaban.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1666006173&t=dc8f94e8b52b06e1cacecd8d227e6191);
+  background-clip: text;
+  color: transparent;
+  font-size: 20px;
+  //font-size: 15em;
+}
+
+
+
+
+
+
+
+
+
+.loading > div {
+  border: 1px solid black;
+  display: inline-block;
+  float: none;
+  background-color: currentColor;
+  border: 0 solid currentColor;
+}
+
+
+.loading > div:nth-child(1) {
+  animation-delay: -300ms;
+}
+
+.loading > div:nth-child(2) {
+  animation-delay: -150ms;
+}
+
+.loading > div:nth-child(3) {
+  animation-delay: 0ms;
+}
+
+.loading > div {
+  width: 5px;
+  height: 5px;
+  margin: 2px;
+  border-radius: 100%;
+  animation: ball-pulse 1.5s ease infinite;
+}
+@keyframes ball-pulse {
+  0%,
+  60%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  30% {
+    opacity: 0.1;
+    transform: scale(0.01);
+  }
 }

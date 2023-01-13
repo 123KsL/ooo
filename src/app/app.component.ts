@@ -12,10 +12,14 @@ import { SwPush } from "@angular/service-worker";
 })
 
 export class AppComponent {
+  //segmenter!:Intl.Segmenter
   constructor(
     private SwPush:SwPush,
     public ThemeColorService: ThemeColorService,
 ) {
+ // this.segmenter=new Intl.Segmenter("en-US", { granularity: "sentence" })
+  //console.log(this.segmenter.segment('https://juejin.cn/post/7179763060809138235'))
+  
     pdfDefaultOptions.assetsFolder = 'assets';
     this.ThemeColorService.Theme('#000', 'primary')
     this.ThemeColorService.Theme('#999;', 'accent')
@@ -36,6 +40,7 @@ export class AppComponent {
     // }
 
     if (!this.SwPush.isEnabled) {
+      //Math.pow()
       console.log("Notification is not enabled.");
       return;
     }

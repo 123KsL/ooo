@@ -1,0 +1,58 @@
+.c1 {
+    // background-image: url(./1.webp);
+    //width: 100px;
+    height: 50px;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 50px;
+    text-align: center;
+    margin: 0 auto;
+    background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(to bottom, #ec428c, #7bd6d5);
+    user-select: none; //禁用光标选中
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.c2 {
+    color: #ec428c;
+
+    &::after {
+        content: attr(data-text);
+        color: #32d1d3;
+        mask: linear-gradient(to bottom, transparent, #000);
+        white-space: nowrap;
+    }
+}
+
+.c3 {
+    &:empty::after {
+        content: "暂无数据";
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        font-size: 20px;
+        font-weight: 500;
+        color: #b0b0b0;
+        background-color: white;
+    }
+
+}
+
+.c4 {
+    &>div {
+        border: 1px solid black;
+        width: 100%;
+    }
+
+    width: 200px;
+    display: flex;
+    //justify-content:space-between;
+    height: 50px;
+    border: 1px solid black;
+    gap: 20px;
+}

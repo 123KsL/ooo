@@ -8,11 +8,26 @@
 <!-- <div class="a1">
 
 </div> -->
-<ng-container *ngFor="let item of ItemList" style="border: 1px solid black;">
-  name:{{item.name}}
-  count:{{item.count}}<br>
+<ng-container *ngFor="let item of ItemList;let index=index" style="border: 1px solid black;">
+  <p>
+    name:{{item.name}}
+    count:{{item.count}}
+    <mat-icon  (click)="Delete(item,index)">delete</mat-icon>
+    <!-- <mat-icon  (click)="openEdit()">edit</mat-icon> -->
+  </p>
+
 </ng-container>
 
+------------------------------------
+<ng-container *ngFor="let item of ItemList1;let index=index" style="border: 1px solid black;">
+  <p>
+    name:{{item.name}}
+    count:{{item.count}}
+    <mat-icon  (click)="Delete(item,index)">delete</mat-icon>
+    <!-- <mat-icon  (click)="openEdit()">edit</mat-icon> -->
+  </p>
+
+</ng-container>
 <form class="example-form" [formGroup]="FromGroup">
     <mat-form-field class="example-full-width" >
       <mat-label>Name</mat-label>
@@ -25,4 +40,14 @@
       </mat-form-field>
       <button mat-raised-button color="primary" (click)="OK()">OK</button>
   </form>
+  <!-- <form class="example-form" [formGroup]="FromGroupEdit">
+    <mat-form-field class="example-full-width">
+        <mat-label>Count</mat-label>
+        <input matInput placeholder="count1" formControlName="count1">
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="OK1()">OK</button>
+  </form> -->
+  <input type="file" (change)="fileChange($event)">
+  <button mat-raised-button color="primary" (click)="postTypeRequest1()">OK1</button>
+
 

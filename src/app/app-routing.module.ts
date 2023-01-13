@@ -3,9 +3,12 @@ import { NoPreloading, PreloadAllModules, RouterModule, Routes } from '@angular/
 import { NewkslComponent } from './newksl/newksl.component';
 import { ResolveService } from './service/resolve.service';
 import { Sss1Component } from './sss1/sss1.component';
+import { PhotosComponent } from './photos/photos.component';
 
 export const routes: Routes = [
-  { path: '', component: NewkslComponent, resolve: { msg: ResolveService } }
+  // { path: '', component: NewkslComponent, resolve: { msg: ResolveService } }
+  { path: 'two', component: NewkslComponent },
+  { path: 'photo', component: PhotosComponent }
   //{path:'' ,component:Sss1Component}
 
 ];

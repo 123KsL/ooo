@@ -20,8 +20,11 @@ import { DxButtonModule } from 'devextreme-angular';
 import { TrianglesComponent } from './triangles/triangles.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from 'src/environments/environment';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptorService } from './service/token-interceptor.service';
+import { DddComponent } from './ddd/ddd.component';
+import { PhotosComponent } from './photos/photos.component';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 @NgModule({
   declarations: [
@@ -34,8 +37,11 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     ColorComponent,
     ColorOneComponent,
     TrianglesComponent,
+    DddComponent,
+    PhotosComponent,
   ],
   imports: [
+    LazyLoadImageModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     DemoMaterialModule,
     BrowserModule,
@@ -47,10 +53,15 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     DxButtonModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
   ],
   providers: [
-
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    },
   ],
   bootstrap: [AppComponent]
 })
