@@ -8,7 +8,7 @@ import * as GIF from 'gif.js';
 //import * as html2canvas from 'html2canvas';
 // import html2canvas from 'html2canvas';
 import html2canvas from 'html2canvas';
-
+import * as domtoimage from 'dom-to-image';
 
 @Component({
   selector: 'app-newksl',
@@ -26,6 +26,8 @@ export class NewkslComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('gifImageElement') gifImageElement!: ElementRef;
   @ViewChild('gifCanvas') gifCanvas!: ElementRef;
   @ViewChild('watermarking') watermarking!: ElementRef;
+  @ViewChild('imgPerson') imgPerson!: ElementRef;
+  @ViewChild('divClass') divClass!: ElementRef;
 
 
   numbers$!: Observable<number[]>;
@@ -46,6 +48,7 @@ export class NewkslComponent implements OnInit, OnDestroy, AfterViewInit {
 
 
       })
+    this.RabbitList()
   }
   ngAfterViewInit(): void {
     //throw new Error('Method not implemented.');
@@ -92,13 +95,6 @@ export class NewkslComponent implements OnInit, OnDestroy, AfterViewInit {
         this.chunks.push(event.data)
       }
     }
-
-
-
-
-
-
-
     recorder.onstop = () => {
       console.log(this.chunks);
       this.chunks = [];
@@ -109,14 +105,17 @@ export class NewkslComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     recorder.start(200);
-
+    
     timer(0, 5000).pipe(  //初始延迟时间,间隔时间
       tap((x) => {
         //  console.log(x);
         //  console.log(this.chunks) ;
         this.blob = new Blob(this.chunks, {
-          type: 'video/webm;codecs=vp9',
+          //type: 'video/webm;codecs=vp9',
+          //type: 'video/mp4',
+          type: 'video/mp4;codecs=avc1.42E01E,mp4a.40.2',
         });
+        console.log(this.chunks,URL.createObjectURL(this.blob));
         this.chunks = []
         console.log(this.blob)
         //this.WebSocket.send(this.blob);
@@ -198,6 +197,7 @@ export class NewkslComponent implements OnInit, OnDestroy, AfterViewInit {
   start1() {
     // localStorage.setItem('MediaStreamData',this.srcObject)
     console.log(this.srcObject, JSON.stringify(this.srcObject))
+    console.log(this.srcObject)
     this.videoElem.nativeElement.srcObject = this.srcObject;
     //this.WebSocket.send(this.srcObject);
     const videoTrack = this.videoElem.nativeElement.srcObject.getVideoTracks()[0];
@@ -220,6 +220,21 @@ export class NewkslComponent implements OnInit, OnDestroy, AfterViewInit {
   WebSocketStatus!: WebSocketStatus
   WebSocket: WebSocket = new WebSocket("ws://127.0.0.1:8001");
   ngOnInit(): void {
+
+    let employeeRecord: [string, number] = ["John Doe", 50000];
+    let [emp_name, emp_salary] = employeeRecord;
+    console.log(`Name: ${emp_name}`);  // "Name: John Doe"
+    console.log(`Salary: ${emp_salary}`);  // "Salary: 50000"
+
+
+//     let value: unknown = "Foo";
+// let len: number = (<string>value);
+
+
+
+
+
+
     // 开启WebSocket服务
     console.log('连接loading')
     this.WebSocket.onopen = (data) => {
@@ -538,17 +553,17 @@ export class NewkslComponent implements OnInit, OnDestroy, AfterViewInit {
     console.log(window.URL.createObjectURL(files[0]));
     const img = new Image();
     img.src = window.URL.createObjectURL(files[0]);
-   
+    this.imgPerson.nativeElement.src = window.URL.createObjectURL(files[0]); //其他
     img.onload = () => {
-      canvas.width=img.width;
-      canvas.height=img.height;
-      console.log(img,img.width,img.height)
+      canvas.width = img.width;
+      canvas.height = img.height;
+      console.log(img, img.width, img.height)
       // 平铺水印
       const canvasWater = document.createElement('canvas');
       //const waterMarkSize = 200; // 水印大小
       console.log(canvas.width, canvas.height)
       canvasWater.width = 50;
-      canvasWater.height =50;
+      canvasWater.height = 50;
       const ctxWater = canvasWater.getContext('2d');
       ctxWater!.textAlign = 'left';
       ctxWater!.textBaseline = 'top';
@@ -584,6 +599,51 @@ export class NewkslComponent implements OnInit, OnDestroy, AfterViewInit {
     a.click();
     document.removeChild(a);
   }
+  rabbitList: string[] = []
+  RabbitList() {
+    //for (let index = 0; index < 3751; index++) {
+     // this.rabbitList.push('兔');
+   // }
+    //console.log(this.rabbitList)
+  }
+  download2() {
+    // const a = document.createElement('a');
+    // a.download = 'my-image.png';
+    // a.href = this.imgPerson.nativeElement.src;
+    // a.click();
+    // document.removeChild(a);
+
+    // html2canvas(this.divClass.nativeElement).then(canvas => {
+    //   const canvas1 = this.gifCanvas.nativeElement;
+    //   canvas1.width = canvas.width;
+    //   canvas1.height = canvas.height;
+    //   const ctx = canvas1.getContext('2d');
+    //   ctx.drawImage(canvas, 0, 0);
+    //   canvas.toDataURL('image/png', 0.02);
+
+    //   const a = document.createElement('a');
+    //   a.download = 'my-image.png';
+    //   a.href = canvas.toDataURL('image/png', 1);
+    //   a.click();
+    //   document.removeChild(a);
+
+    // });
+    domtoimage.toPng(this.divClass.nativeElement)
+      .then(dataUrl => {
+        console.log('dataUrl', dataUrl)
+        // Do something with the dataUrl
+        const a = document.createElement('a');
+        a.download = 'my-image.png';
+        a.href = dataUrl;
+        a.click();
+        document.removeChild(a);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }
+
+  
 }
 
 interface WebSocketStatus {

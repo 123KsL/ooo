@@ -4,11 +4,16 @@ import { NewkslComponent } from './newksl/newksl.component';
 import { ResolveService } from './service/resolve.service';
 import { Sss1Component } from './sss1/sss1.component';
 import { PhotosComponent } from './photos/photos.component';
+import { TrianglesComponent } from './triangles/triangles.component';
+import { OneComponent } from './one/one.component';
 
 export const routes: Routes = [
   // { path: '', component: NewkslComponent, resolve: { msg: ResolveService } }
   { path: 'two', component: NewkslComponent },
-  { path: 'photo', component: PhotosComponent }
+  { path: 'photo', component: PhotosComponent },
+  { path: 'one', component: OneComponent },
+  { path: 'node', component: TrianglesComponent }
+  
   //{path:'' ,component:Sss1Component}
 
 ];

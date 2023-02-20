@@ -1,18 +1,27 @@
 import { Component, ElementRef, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { fabric } from "fabric";
+import { DoublecaseService } from '../service/doublecase.service';
+import { ThemeColorService } from '../service/theme-color.service';
+import { routes } from './../app-routing.module';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-photos',
   templateUrl: './photos.component.html',
-  styleUrls: ['./photos.component.scss']
+  styleUrls: ['./photos.component.scss'],
+  providers: [DoublecaseService] // 在组件级别声明服务
 })
 export class PhotosComponent implements OnInit, AfterViewInit {
   @ViewChild('canvas') canvasElem!: ElementRef;
   @ViewChild('pElem') pElem!: ElementRef;
   @ViewChild('fupElem') fupElem!: ElementRef;
 
-  constructor() {
-
-
+  constructor(private DoublecaseService: DoublecaseService,
+    private routes :Router) {
+    this.DoublecaseService.value=this.DoublecaseService.value + 1;
+    setTimeout(() => {
+      this.routes.navigate(['one']);
+    }, 5000);
+    console.log(this.DoublecaseService.value)
 
 
 

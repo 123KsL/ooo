@@ -14,12 +14,13 @@ import { SwPush } from "@angular/service-worker";
 export class AppComponent {
   //segmenter!:Intl.Segmenter
   constructor(
-    private SwPush:SwPush,
+    private SwPush: SwPush,
     public ThemeColorService: ThemeColorService,
-) {
- // this.segmenter=new Intl.Segmenter("en-US", { granularity: "sentence" })
-  //console.log(this.segmenter.segment('https://juejin.cn/post/7179763060809138235'))
-  
+  ) {
+    this.indexedDBData()
+    // this.segmenter=new Intl.Segmenter("en-US", { granularity: "sentence" })
+    //console.log(this.segmenter.segment('https://juejin.cn/post/7179763060809138235'))
+
     pdfDefaultOptions.assetsFolder = 'assets';
     this.ThemeColorService.Theme('#000', 'primary')
     this.ThemeColorService.Theme('#999;', 'accent')
@@ -49,16 +50,37 @@ export class AppComponent {
       serverPublicKey: 'BC4KHwc7JWt-ZIpo8_B5XOZ0N7irG8eWdalBlsInti-BzuLh5zcIuY36yIlIZTVJEsQnC5sgBz5MEYnTUTJt-3U'
     }).then((_: any) => {
 
-      console.log(JSON.stringify(_),'ok');
-    }).catch((_: any) =>{
-      console.log(_,'no')
+      console.log(JSON.stringify(_), 'ok');
+    }).catch((_: any) => {
+      console.log(_, 'no')
     });
-  
-
-
 
   }
 
-   
+  indexedDBData() {
+    console.log('start')
+    const request = window.indexedDB.open('databaseName1', 1);
+    request.onsuccess = (success) => {
+      console.log(success,request.result);
+      let objectStore
+      // console.log(objectStore)
+      if (!request.result.objectStoreNames.contains('person')) {
+        objectStore= request.result.createObjectStore('person', { keyPath: 'id' });
+        objectStore.createIndex('name', 'name', { unique: false });
+        objectStore.createIndex('email', 'email', { unique: true });
+      }else{
+       // var transaction = db.transaction(['person']);
+         objectStore = request.result.transaction('person').objectStore('person');
+      }
+      
+    }
+    request.onerror = (error) => {
+      console.log(error)
+    }
+
+    request.onupgradeneeded = (up) => {
+      console.log(up)
+    }
+  }
 
 }
