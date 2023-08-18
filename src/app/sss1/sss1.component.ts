@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ApplicationRef, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChanges, ViewEncapsulation } from '@angular/core';
+import { NgModel } from '@angular/forms';
 import { AsyncSubject, every, filter, from, interval, map, materialize, multicast, Observable, of, scan, Subject, take, toArray } from 'rxjs';
 
 @Component({
@@ -7,7 +8,7 @@ import { AsyncSubject, every, filter, from, interval, map, materialize, multicas
   templateUrl: './sss1.component.html',
   styleUrls: ['./sss1.component.scss'],
   standalone: true,
-  imports: [CommonModule],
+  //imports: [CommonModule],
   changeDetection: ChangeDetectionStrategy.OnPush
   // styles:'border:1px solid black',
 })

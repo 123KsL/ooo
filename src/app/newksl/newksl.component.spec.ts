@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NewkslComponent } from './newksl.component';
+import { ActivatedRoute } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('NewkslComponent', () => {
   let component: NewkslComponent;
@@ -8,7 +10,8 @@ describe('NewkslComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ NewkslComponent ]
+      imports: [ NewkslComponent,RouterTestingModule],
+      providers: []
     })
     .compileComponents();
 

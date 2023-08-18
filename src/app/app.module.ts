@@ -13,7 +13,6 @@ import { SssComponent } from './sss/sss.component';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { OnepipePipe } from './onepipe.pipe';
 import { NoPreloading, RouterModule } from '@angular/router';
-import { ColorComponent } from './color-1/color-1.component';
 import { ColorOneComponent } from './color-one/color-one.component';
 //import { NgOptimizedImage } from '@angular/common';
 import { DxButtonModule } from 'devextreme-angular';
@@ -25,6 +24,9 @@ import { TokenInterceptorService } from './service/token-interceptor.service';
 import { DddComponent } from './ddd/ddd.component';
 import { PhotosComponent } from './photos/photos.component';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
+import { WebglComponent } from './webgl/webgl.component';
+import { CssComponent } from './css/css.component';
+import { ThreeJsComponent } from './three-js/three-js.component';
 
 @NgModule({
   declarations: [
@@ -34,11 +36,13 @@ import { LazyLoadImageModule } from 'ng-lazyload-image';
     Mp41Component,
     SssComponent,
     OnepipePipe,
-    ColorComponent,
     ColorOneComponent,
     TrianglesComponent,
     DddComponent,
     PhotosComponent,
+    WebglComponent,
+    CssComponent,
+    ThreeJsComponent,
   ],
   imports: [
     LazyLoadImageModule,

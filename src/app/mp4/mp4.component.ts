@@ -149,7 +149,7 @@ export class Mp4Component implements OnInit, AfterViewInit {
 
   }
   Sidebar() {
-    this.drawer.toggle()
+    //this.drawer.toggle()
     this.showFiller = !this.showFiller
   }
   formatLabel(value: number) {

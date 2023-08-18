@@ -2,11 +2,14 @@ import { TestBed } from '@angular/core/testing';
 
 import { ThemeColorService } from './theme-color.service';
 
+
 describe('ThemeColorService', () => {
   let service: ThemeColorService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports:[]
+    });
     service = TestBed.inject(ThemeColorService);
   });
 

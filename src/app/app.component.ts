@@ -1,10 +1,11 @@
 declare const Email: any;
+export declare const tinycolor: Function;
 import { Component } from '@angular/core';
 import { Style, TableTemplate } from '@wslksw/my-table';
 import { Subject } from 'rxjs';
 import { pdfDefaultOptions } from 'ngx-extended-pdf-viewer';
 import { ThemeColorService } from './service/theme-color.service';
-import { SwPush } from "@angular/service-worker";
+//import { SwPush } from "@angular/service-worker";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,12 +13,14 @@ import { SwPush } from "@angular/service-worker";
 })
 
 export class AppComponent {
+  title:string='ooo'
   //segmenter!:Intl.Segmenter
   constructor(
-    private SwPush: SwPush,
+    //private SwPush: SwPush,
     public ThemeColorService: ThemeColorService,
   ) {
-    this.indexedDBData()
+    console.log(tinycolor,'tinycolor');
+   // this.indexedDBData()
     // this.segmenter=new Intl.Segmenter("en-US", { granularity: "sentence" })
     //console.log(this.segmenter.segment('https://juejin.cn/post/7179763060809138235'))
 
@@ -40,22 +43,22 @@ export class AppComponent {
     //     });
     // }
 
-    if (!this.SwPush.isEnabled) {
+   // if (!this.SwPush.isEnabled) {
       //Math.pow()
       console.log("Notification is not enabled.");
       return;
     }
 
-    this.SwPush.requestSubscription({
-      serverPublicKey: 'BC4KHwc7JWt-ZIpo8_B5XOZ0N7irG8eWdalBlsInti-BzuLh5zcIuY36yIlIZTVJEsQnC5sgBz5MEYnTUTJt-3U'
-    }).then((_: any) => {
+    //this.SwPush.requestSubscription({
+      //serverPublicKey: 'BC4KHwc7JWt-ZIpo8_B5XOZ0N7irG8eWdalBlsInti-BzuLh5zcIuY36yIlIZTVJEsQnC5sgBz5MEYnTUTJt-3U'
+    //}).then((_: any) => {
 
-      console.log(JSON.stringify(_), 'ok');
-    }).catch((_: any) => {
-      console.log(_, 'no')
-    });
+     // console.log(JSON.stringify(_), 'ok');
+    //}).catch((_: any) => {
+     // console.log(_, 'no')
+    //});
 
-  }
+  //}
 
   indexedDBData() {
     console.log('start')

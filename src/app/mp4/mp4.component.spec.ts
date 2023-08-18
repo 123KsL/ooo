@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Mp4Component } from './mp4.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 describe('Mp4Component', () => {
   let component: Mp4Component;
@@ -8,7 +9,8 @@ describe('Mp4Component', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ Mp4Component ]
+      imports: [MatMenuModule],
+      declarations: [ Mp4Component]
     })
     .compileComponents();
 
